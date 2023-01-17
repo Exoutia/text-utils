@@ -45,10 +45,11 @@ export default function TextForm(props) {
   const [text, setText] = useState("Enter text here");
   return (
     <>
+    <div style={{color: props.mode==="primary" ? "black" : "white"}}>
     <div className='container'>
       <h1>{props.heading}</h1>
       <div className="mb-3">
-        <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+        <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode=== "primary" ? "White" : "#464646", color: props.mode==="primary" ? "black" : "white"}} id="myBox" rows="8"></textarea>
       </div>
       <button className="btn btn-primary mx-2 my-1" onClick={handleUpClick} >Convert to Uppercase </button>
       <button className="btn btn-primary mx-2 my-1" onClick={handleLoClick} >Convert to Lowercase </button>
@@ -64,6 +65,7 @@ export default function TextForm(props) {
       <p> {0.008 * text.split(" ").length} min to read the text.</p>
       <h2>Preview</h2>
       <p>{text} </p>
+    </div>
     </div>
     </>
   )
