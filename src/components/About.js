@@ -1,34 +1,10 @@
-import { useState } from "react";
+// import { useState } from "react";
 import React from "react";
 
-export default function About() {
-
-  const [myStyle, setMyStyle] = useState({
-    color: 'white',
-    backgroundColor: "#212529",
-  })
-
-  const [btnText, setBtnText] = useState("Enable Light Mode")
-
-  let toggleStyle = () => {
-    if (myStyle.color === 'white') {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white"
-      })
-      setBtnText("Enable Dark mode")
-    }
-    else {
-      setMyStyle({
-        color: 'white',
-        backgroundColor: "#212529",
-      })
-      setBtnText("Enable Light mode")
-    }
-  }
+export default function About(props) {
 
   return (
-    <div className="container" style={myStyle}>
+    <div className="container">
       <h1 className="my-3">About Us</h1>
       <div className ="accordion" id="accordionExample" >
         <div className ="accordion-item">
@@ -40,7 +16,6 @@ export default function About() {
               data-bs-target="#collapseOne"
               aria-expanded="true"
               aria-controls="collapseOne"
-              style={myStyle}
 
             >
               Accordion Item #1
@@ -73,9 +48,8 @@ export default function About() {
               data-bs-target="#collapseTwo"
               aria-expanded="false"
               aria-controls="collapseTwo"
-              style={myStyle}
             >
-              Accordion Item #2
+              Accordion Item #2212529
             </button>
           </h2>
           <div
@@ -105,7 +79,6 @@ export default function About() {
               data-bs-target="#collapseThree"
               aria-expanded="false"
               aria-controls="collapseThree"
-              style={myStyle}
             >
               Accordion Item #3
             </button>
@@ -130,7 +103,6 @@ export default function About() {
         </div>
       </div>
       <div className="contianter my-3">
-        <button onClick={toggleStyle} type="button" className="btn btn-primary">{btnText}</button>
       </div>
     </div>
   );
