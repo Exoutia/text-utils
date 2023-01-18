@@ -6,23 +6,34 @@ export default function TextForm(props) {
     console.log("this is handle on upppercase click"+text);
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("converted to upper case", "success")
   }
   const handleLoClick = () => {
     console.log("this is handle on lowercase click"+text);
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("converted to lower case", "success")
   }
   const handleInverseClick = () => {
     console.log("this is handle on lowercase click"+text);
     let newText = text.split("").reverse().join("");
     setText(newText);
+    props.showAlert("inverted the text input", "success")
+
   }
   const handleClearClick = () => {
     console.log("This has cleared the text box");
     let newText = '';
     setText(newText);
+    props.showAlert("cleared the text input", "success")
   }
 
+  const handleExtraWhiteSpace = () => {
+    console.log("remove extra spaces");
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "))
+    props.showAlert("removed the extra spaces", "success")
+  }
 
   const handleOnChange = (event) => {
     console.log("this hdnale on change");
@@ -34,13 +45,9 @@ export default function TextForm(props) {
     let text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("copied the text into clipboard", "success");
   }
 
-  const handleExtraWhiteSpace = () => {
-    console.log("remove extra spaces");
-    let newText = text.split(/[ ]+/);
-    setText(newText.join(" "))
-  }
 
   const [text, setText] = useState("Enter text here");
   return (
