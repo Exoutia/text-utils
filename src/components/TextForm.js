@@ -48,8 +48,19 @@ export default function TextForm(props) {
     props.showAlert("copied the text into clipboard", "success");
   }
 
+  const countWord = (text) => {
+    const text_field = text.split(' ');
+    let cnt = 0;
+    for(let i of text_field){
+      if(i!== ''){
+        cnt += 1;
+      }
+    }
+    return cnt;
+  }
 
   const [text, setText] = useState("Enter text here");
+  let wordCount = countWord(text)
   return (
     <>
     <div style={{color: props.mode==="primary" ? "black" : "white"}}>
@@ -68,8 +79,8 @@ export default function TextForm(props) {
     </div>
     <div className="container">
       <h2>Your text summary</h2>
-      <p> {text.split(" ").length} words and {text.length} characters </p>
-      <p> {0.008 * text.split(" ").length} min to read the text.</p>
+      <p> {wordCount} words and {text.length} characters </p>
+      <p> {0.008 * wordCount} min to read the text.</p>
       <h2>Preview</h2>
       <p>{text} </p>
     </div>
