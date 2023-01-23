@@ -3,8 +3,14 @@ import './App.css';
 import { useState } from 'react';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-// import About from './components/About';
+import About from './components/About';
 import Alert from './components/Alert';
+
+import { BrowserRouter as Router,
+        Route,
+        Routes
+} from 'react-router-dom';
+
 
 function App() {
   let [mode, setMode] = useState("primary");
@@ -37,12 +43,16 @@ function App() {
 
   return (
     <div>
-      <Navbar title="Text Utils" aboutText="About us" mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert}/>
-      <div className="container">
-      <TextForm showAlert={showAlert} heading="Enter the text to analyze." mode={mode}/>
-      </div>
-      {/* <About mode={mode} ></About> */}
+      <Router>
+        <Navbar title="Text Utils" aboutText="About us" mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert}/>
+        <div className="container">
+        <Routes>
+          <Route path='/' element={<TextForm showAlert={showAlert} heading="Enter the text to analyze." mode={mode}/>} ></Route>
+          <Route path='/about' element={<About></About>} ></Route>
+        </Routes>
+        </div>
+      </Router>
     </div>
   );
 }
